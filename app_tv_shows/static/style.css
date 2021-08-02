@@ -1,0 +1,41 @@
+.maincontainer{
+    width: 750px;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0 0 10px rgb(54, 53, 53);
+}
+.createcontainer {
+    width: 500px;
+    min-height: 400px;
+    padding-bottom: 30px;
+}
+.goback{
+    width: 200px;
+    height: 100px;
+    text-align: right;
+    font-size: large;
+    padding: 30px;
+    text-align: left;
+}
+.header{
+    display: flex;
+    justify-content: space-between;
+}
+.aboutshow{
+    font-size: medium;
+}
+table{
+    box-shadow: 0 0 10px rgb(54, 53, 53);
+}
+h1{
+    padding: 20px;
+}
+.content{
+    min-height: 250px;
+}
+.btn{
+    margin: 10px 37%;
+}
+.gotoshow{
+    margin: 10px 40%;
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Semi-Restful TV Shows</title>
+        {% load static %}
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'style.css' %}">
+    </head>
+    <body>
+        <div class="container maincontainer">
+            <div class="createcontainer">
+                <h1>Add a new show</h1>
+                {% if messages %}
+                <ul class="messages">    
+                    {% for message in messages %}    
+                        <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                <form action="/shows/create" method = "POST">
+                    {% csrf_token %}
+                    <input type="hidden" name = "do_what" value="create_record">
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input type="text" class="form-control" id="title" placeholder="Enter title" name = "title">
+                    </div>
+                    <div class="form-group row">
+                        <div class="col">
+                            <label for="network">Network</label>
+                            <input type="text" class="form-control" id="network" placeholder="Enter network" name = "network">
+                        </div>
+                        <div class="col">
+                            <label for="releasedate">Release date</label>
+                            <input type="date" class="form-control" id="releasedate" placeholder="Enter release date" name = "releasedate">
+                        </div>
+                    </div>
+                    <div class="form-group "> 
+                        <p>Description</p>
+                            <textarea name="desc" id="desc" cols="56" rows="5"></textarea>
+                    </div>
+                    <button class="btn btn-primary col-sm-3">Create</button>
+                </form>
+            </div>
+            <a class="goback"href="/shows">Go Back</a>
+        </div>
+    </body>
+    </html>
