@@ -18,14 +18,17 @@ class ShowManager(models.Manager):
         if len(postData['network']) < 3:
             errors['network'] = "The length of the network must be at least 3 characters long"
         
-        print("datenow = ")
-        print(date.today())
-        print("date release string= "+postData['releasedate'])
-        print("release date = ")
-        print(datetime.strptime(postData['releasedate'], '%Y-%m-%d'))
+        if len(postData['releasedate']) == "":
+            errors['releasedate'] = "The release date must be provided!"
+        
+        # print("datenow = ")
+        # print(date.today())
+        # print("date release string= "+postData['releasedate'])
+        # print("release date = ")
+        # print(datetime.strptime(postData['releasedate'], '%Y-%m-%d'))
 
         if datetime.strptime(postData['releasedate'], '%Y-%m-%d') >= datetime.now():
-            print("==========successful========")
+            # print("==========successful========")
             errors['releasedate'] = "Release date you entered is invalid. It must be in the past"
 
         if len(postData['desc']) > 0 and len(postData['desc']) < 10:
